@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+@await Component.InvokeAsync("HeadPartial")
+
+
+<body>
+    <div class="container-xxl bg-white p-4">
+
+        @await Component.InvokeAsync("Spinner")
+
+        @await Component.InvokeAsync("NavBar")
+
+        @await Component.InvokeAsync("ContactCoverPartial")
+
+       
+
+        @await Html.PartialAsync("/Views/Contact/SendMessage.cshtml");
+
+
+        @await Html.PartialAsync("/Views/Default/_SubscribPartial.cshtml")
+
+        @await Component.InvokeAsync("Footer")
+    </div>
+
+
+    @await Component.InvokeAsync("Scripte")
+
+</body>
+
+</html>
+
+

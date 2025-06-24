@@ -1,0 +1,20 @@
+﻿@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table>
+    <tr>
+        
+    </tr>
+    @foreach(var x in Model)
+    {
+        <p>
+            @x.Content
+        </p>
+      
+        <a href="/AdminAbout/UpdateAbout/@x.AboutUsId" class="btn btn-warning">Güncelle</a>
+       
+    }
+</table>

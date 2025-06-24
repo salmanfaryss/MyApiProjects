@@ -1,0 +1,30 @@
+﻿@model List<ResultServiceDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Unvan</th>
+        <th>Description</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <th>@x.ServiceId</th>
+            <td>@x.Title</td>
+            <td>@x.Description</td>
+            <td><a href="/Service/DeleteService/@x.ServiceId" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td><a href="/Service/UpdateService/@x.ServiceId" class="btn mb-1  btn-rounded btn-outline-success">Güncelle</a></td>
+            <td><a href="#" class="btn mb-1 btn-outline-dark">Detylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Service/AddService/" class="btn mb-1 btn-outline-info">Yeni Hizmet Ekle</a>
+

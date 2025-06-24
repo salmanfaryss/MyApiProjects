@@ -1,0 +1,84 @@
+﻿@model List<ResultBookingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+@{
+    string durum = "";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h4>Rezervasyon Listesi</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Misafir</th>
+                                    <th>Giriş Tarihi</th>
+                                    <th>Çikiş Tarihi</th>
+                                    <th>Durum</th>
+                                    <th>Onayla</th>
+                                    <th>Beklet</th>
+                                    <th>Iptal et</th>
+                                    <th>Detaylar</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var x in Model)
+                                {
+                                    <tr>
+                                        <th>@x.BookingId</th>
+                                        <td>@x.Name  @x.Surname</td>
+                                        <td>@x.Checkin</td>
+                                        <td>@x.Checkout</td>
+                                        
+                                        @if (x.Status == "Onaylandı")
+                                        {
+
+                                            durum = "badge badge-success px-2";
+                                        }
+                                        else @if (x.Status == "Müşteri Aranacak")
+                                        {
+                                            durum = "badge badge-warning px-2";
+                                        }
+                                        else{
+                                        
+                                                durum = "badge badge-danger px-2";
+                                            }
+                                        <td>
+                                            <span class="@durum">@x.Status</span>
+                                        </td>
+                                        <td>
+                                            <a href="/BookingAdmin/ApprovedReservation2/@x.BookingId" type="button" class="btn mb-1 btn-success">Onayla <span class="btn-icon-right"><i class="fa fa-check"></i></span> </a>
+                                        </td>
+                                        <td>
+                                            <a href="/BookingAdmin/BookingAwait/@x.BookingId" type="button" class="btn mb-1 btn-primary">Beklet <span class="btn-icon-right"><i class="fa fa-check"></i></span> </a>
+                                        </td>
+
+
+                                        <td>
+                                            <a href="/BookingAdmin/BookingCancel/@x.BookingId" type="button" class="btn mb-1 btn-danger">Iptal et <span class="btn-icon-right"><i class="fa fa-close"></i></span> </a>
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-warning">Detay</a>
+                                        </td>
+                                        
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+    </div>
+</div>

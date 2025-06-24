@@ -1,0 +1,22 @@
+﻿@model List<ApiMovieModel>
+@{
+    Layout = null;
+}
+
+<table class="table table-bordered">
+   <tr>
+       <th>#</th>
+       <th>Film Adı</th>
+       <th>Puan</th>
+       <th>Fragman</th>
+   </tr>
+    @foreach(var x in Model)
+    {
+        <tr>
+            <th>@x.rank</th>
+            <td>@x.title</td>
+            <td>@x.thumbnail</td>
+            <td><a href="#" class="btn btn-dark">fragmanı oynat</a></td>
+        </tr>
+    }
+</table>
